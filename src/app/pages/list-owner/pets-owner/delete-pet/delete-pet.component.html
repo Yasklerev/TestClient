@@ -1,0 +1,16 @@
+<div class="row center-xs">
+  <div class="col-xs-12">
+    <div class="box">
+      <mat-card>
+        <mat-card-title> ¿Deseas eliminar esta mascota? </mat-card-title>
+        <mat-card-subtitle>
+          Nombre de la mascota: {{ data.namePet }}
+        </mat-card-subtitle>
+        <mat-card-actions>
+          <button mat-raised-button (click)="deletePet(data.id)">Sí</button>
+          <button mat-raised-button (click)="noDelete()">No</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>

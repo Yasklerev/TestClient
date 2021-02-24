@@ -1,0 +1,25 @@
+<div class="row center-xs">
+  <div class="col-xs-8">
+    <div class="box">
+      <mat-card class="card" *ngFor="let item of pets">
+        <mat-card-title>
+          {{ item.namePet }}
+        </mat-card-title>
+        <mat-card-subtitle>
+          Nombre propietario: {{ item.name + " " + item.last_name }}
+          <br />
+          Rut propietario: {{ item.rut }}
+        </mat-card-subtitle>
+        <mat-card-content>
+          Tipo de animal: {{ item.type_pet }}
+          <br />
+          Raza: {{ item.race }}
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button>Eliminar</button>
+          <button mat-raised-button>Modificar</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>

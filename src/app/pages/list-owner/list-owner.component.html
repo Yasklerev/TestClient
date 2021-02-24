@@ -1,0 +1,30 @@
+<div class="row center-xs">
+  <div class="col-xs-8">
+    <div class="box">
+      <mat-card class="card" *ngFor="let item of owners">
+        <mat-card-title>
+          {{ item.name }}
+        </mat-card-title>
+        <mat-card-content>
+          {{ item.last_name }}
+          <br />
+          {{ item.rut }}
+          <br />
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button (click)="openDialogAddPet(item.id)">
+            Agregar mascotas
+          </button>
+          <button
+            mat-raised-button
+            (click)="openDialogListPets(item.id, item.name)"
+          >
+            Ver mascotas
+          </button>
+          <button mat-raised-button>Modificar</button>
+          <button mat-raised-button>Eliminar</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>

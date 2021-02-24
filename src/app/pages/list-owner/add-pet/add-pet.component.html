@@ -1,0 +1,55 @@
+<div class="row">
+  <div class="col-xs-12">
+    <div class="box">
+      <mat-card>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="box">
+              <form autocomplete="off" [formGroup]="form" (ngSubmit)="save()">
+                <mat-form-field class="input" appearance="outline">
+                  <mat-label>Nombre</mat-label>
+                  <input formControlName="name" matInput placeholder="Nombre" />
+                </mat-form-field>
+                <mat-form-field class="input" appearance="outline">
+                  <mat-label>Tipo de mascota</mat-label>
+                  <input
+                    formControlName="type_pet"
+                    matInput
+                    placeholder="Tipo de mascota"
+                  />
+                </mat-form-field>
+                <mat-form-field class="input" appearance="outline">
+                  <mat-label>Raza</mat-label>
+                  <input formControlName="race" matInput placeholder="Raza" />
+                </mat-form-field>
+                <mat-form-field class="input" appearance="outline">
+                  <mat-label>Sexo</mat-label>
+                  <input formControlName="sex" matInput placeholder="Sexo" />
+                </mat-form-field>
+                <div class="picker">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Fecha de nacimeinto</mat-label>
+                    <input
+                      matInput
+                      formControlName="birthday"
+                      [matDatepicker]="picker"
+                    />
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+                  <button
+                    type="button"
+                    mat-raised-button
+                    (click)="picker.open()"
+                  >
+                    Abrir calendario
+                  </button>
+                </div>
+                <button type="submit" mat-raised-button>Regsitrarse</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</div>

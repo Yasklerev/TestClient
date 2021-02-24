@@ -1,0 +1,23 @@
+<div class="row center-xs">
+  <div class="col-xs-12">
+    <div *ngIf="state === true" class="box">
+      <h1>Mascotas de: {{ data.name }}</h1>
+
+      <mat-card class="card" *ngFor="let item of pets">
+        <h4>Nombre mascota: {{ item.namePet }}</h4>
+        <mat-card-subtitle>
+          Tipo de animal: {{ item.type_pet }}
+        </mat-card-subtitle>
+        <mat-card-content> Raza del animal: {{ item.race }} </mat-card-content>
+        <mat-card-actions>
+          <button mat-button (click)="openDialog(item.id, item.namePet)">
+            Eliminar
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+    <div *ngIf="state === false" class="box">
+      <h2>No tienes mascotas registradas!</h2>
+    </div>
+  </div>
+</div>
