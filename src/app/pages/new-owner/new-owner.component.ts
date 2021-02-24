@@ -10,7 +10,6 @@ import {
 import { OwnerService } from 'src/app/services/owner.service';
 
 import { ActivatedRoute, Router } from '@angular/router';
-
 @Component({
   selector: 'app-new-owner',
   templateUrl: './new-owner.component.html',
@@ -20,12 +19,27 @@ export class NewOwnerComponent implements OnInit {
   edit = false;
   form: FormGroup;
 
+  get rutNoValido(): boolean {
+    return this.form.get('rut').invalid && this.form.get('rut').touched;
+  }
+
+  get emailNoValido(): boolean {
+    return this.form.get('email').invalid && this.form.get('email').touched;
+  }
+
   createForm(): void {
     this.form = this.formBuilder.group({
       name: ['', [Validators.required]],
       last_name: ['', [Validators.required]],
-      rut: ['', [Validators.required]],
-      email: ['', [Validators.required]],
+      rut: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(12),
+          Validators.maxLength(12),
+        ],
+      ],
+      email: ['', [Validators.required, Validators.email]],
       address: ['', [Validators.required]],
       birthday: ['', Validators.required],
     });

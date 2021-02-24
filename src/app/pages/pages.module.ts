@@ -10,7 +10,6 @@ import { DeletePetComponent } from './list-owner/pets-owner/delete-pet/delete-pe
 import { AddPetComponent } from './list-owner/add-pet/add-pet.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { DeleteOwnerComponent } from './list-owner/delete-owner/delete-owner.component';
-
 @NgModule({
   declarations: [
     NewOwnerComponent,

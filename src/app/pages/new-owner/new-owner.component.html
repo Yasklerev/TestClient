@@ -5,7 +5,11 @@
         <div class="row">
           <div class="col-xs-12">
             <div class="box">
-              <form autocomplete="off" [formGroup]="form" (ngSubmit)="edit ? editOwner() : save()">
+              <form
+                autocomplete="off"
+                [formGroup]="form"
+                (ngSubmit)="edit ? editOwner() : save()"
+              >
                 <mat-form-field class="input" appearance="outline">
                   <mat-label>Nombres</mat-label>
                   <input
@@ -25,7 +29,11 @@
                 <mat-form-field class="input" appearance="outline">
                   <mat-label>Rut</mat-label>
                   <input formControlName="rut" matInput placeholder="Rut" />
+                  <div *ngIf="rutNoValido" class="text-danger">
+                    Rut inválido, ej: 23.211.234-5
+                  </div>
                 </mat-form-field>
+
                 <mat-form-field class="input" appearance="outline">
                   <mat-label>Correo</mat-label>
                   <input
@@ -33,6 +41,9 @@
                     matInput
                     placeholder="Correo"
                   />
+                  <div *ngIf="emailNoValido" class="text-danger">
+                    Correo inválido
+                  </div>
                 </mat-form-field>
                 <mat-form-field class="input" appearance="outline">
                   <mat-label>Dirección</mat-label>
@@ -60,8 +71,12 @@
                     Abrir calendario
                   </button>
                 </div>
-                <button type="submit" mat-raised-button *ngIf="edit === true">Modificar</button>
-                <button type="submit" mat-raised-button *ngIf="edit === false">Registrarse</button>
+                <button type="submit" mat-raised-button *ngIf="edit === true">
+                  Modificar
+                </button>
+                <button type="submit" mat-raised-button *ngIf="edit === false">
+                  Registrarse
+                </button>
               </form>
             </div>
           </div>

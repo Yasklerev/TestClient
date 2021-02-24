@@ -22,9 +22,13 @@
     "@angular/platform-browser": "~11.1.0",
     "@angular/platform-browser-dynamic": "~11.1.0",
     "@angular/router": "~11.1.0",
+    "angular-rut": "^1.0.2",
     "moment": "^2.22.2",
+    "ng2-rut": "^0.3.2",
+    "ngx-rut": "^1.0.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
+    "w2-rut-validator": "^1.3.2",
     "zone.js": "~0.11.3"
   },
   "devDependencies": {
