@@ -7,8 +7,8 @@
           Nombre de la mascota: {{ data.namePet }}
         </mat-card-subtitle>
         <mat-card-actions>
-          <button mat-raised-button (click)="deletePet(data.id)">Sí</button>
-          <button mat-raised-button (click)="noDelete()">No</button>
+          <button mat-raised-button color="warn" (click)="deletePet(data.id)">Sí</button>
+          <button mat-raised-button color="primary" (click)="noDelete()">No</button>
         </mat-card-actions>
       </mat-card>
     </div>

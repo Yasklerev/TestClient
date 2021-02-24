@@ -1,10 +1,12 @@
-<div class="row">
+<div class="row form">
   <div class="col-xs-12">
     <div class="box">
       <mat-card>
         <div class="row">
           <div class="col-xs-12">
             <div class="box">
+              <h2 *ngIf="edit === false">Registrar nuevo dueño</h2>
+              <h2 *ngIf="edit === true">Modificar dueño</h2>
               <form
                 autocomplete="off"
                 [formGroup]="form"

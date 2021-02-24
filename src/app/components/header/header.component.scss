@@ -2,17 +2,33 @@
   height: 20px;
   text-align: center;
   font-size: 11px;
-  font-weight: bold;
-  background-color: #4c8c4a;
-}
-
-.color {
-  background-color: #1b5e20;
+  font-weight: 500;
+  background-color: #013a0a;
   color: white;
 }
 
+.pretoolbar {
+  background-color: black;
+  height: 80px;
+  .img {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
+}
+
+.toolbar {
+  background-color: #01579b;
+}
+
+button.mat-raised-button {
+  background-color: white;
+}
+
 .actions {
-  margin-left: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
   button.mat-raised-button {
     margin-left: 10px;
   }

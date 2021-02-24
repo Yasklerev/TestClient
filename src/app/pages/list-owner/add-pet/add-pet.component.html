@@ -5,6 +5,8 @@
         <div class="row">
           <div class="col-xs-12">
             <div class="box">
+              <h2 *ngIf="edit === false">Agregar mascota</h2>
+              <h2 *ngIf="edit === true">Modificar mascota</h2>
               <form autocomplete="off" [formGroup]="form" (ngSubmit)=" edit ? update() : save()">
                 <mat-form-field class="input" appearance="outline">
                   <mat-label>Nombre</mat-label>

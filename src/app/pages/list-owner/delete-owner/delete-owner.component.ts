@@ -34,7 +34,7 @@ export class DeleteOwnerComponent implements OnInit {
           );
         } else {
           alert(
-            'Este registro cuenta con mascotas ligadas a él, primero elimina las mascotas.'
+            'Este registro cuenta con mascotas ligadas a él, primero elimine las mascotas para poder continuar.'
           );
         }
       },

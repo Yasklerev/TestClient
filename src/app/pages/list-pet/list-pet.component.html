@@ -1,4 +1,4 @@
-<div class="row center-xs">
+<div class="row center-xs margin-top">
   <div class="col-xs-8">
     <div class="box">
       <mat-card class="card" *ngFor="let item of pets">
@@ -16,11 +16,11 @@
           Raza: {{ item.race }}
         </mat-card-content>
         <mat-card-actions>
-          <button mat-raised-button (click)="openDialogDelete(item.id)">
-            Eliminar
+          <button color="primary" mat-mini-fab (click)="openDialogUpdate(item)">
+            <mat-icon>create</mat-icon>
           </button>
-          <button mat-raised-button (click)="openDialogUpdate(item)">
-            Modificar
+          <button color="warn" mat-mini-fab (click)="openDialogDelete(item.id)">
+            <mat-icon>delete</mat-icon>
           </button>
         </mat-card-actions>
       </mat-card>
