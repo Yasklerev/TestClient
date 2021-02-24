@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { OwnerService } from 'src/app/services/owner.service';
 import { PetService } from 'src/app/services/pet.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-delete-owner',
@@ -33,9 +34,13 @@ export class DeleteOwnerComponent implements OnInit {
             }
           );
         } else {
-          alert(
-            'Este registro cuenta con mascotas ligadas a él, primero elimine las mascotas para poder continuar.'
-          );
+          Swal.fire({
+            title: 'No es posible realizar esta acción',
+            text:
+              'Este registro cuenta con mascotas ligadas a él, para continuar elimine primero las mascotas.',
+            icon: 'error',
+            confirmButtonText: 'Entiendo',
+          });
         }
       },
       (err) => {

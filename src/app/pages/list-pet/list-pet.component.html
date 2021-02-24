@@ -16,9 +16,13 @@
         </mat-card-subtitle>
         <mat-card-content>
           Tipo de animal: {{ item.type_pet }}
-          <br />
-          Raza: {{ item.race }}
         </mat-card-content>
+        <mat-card-content> Raza: {{ item.race }} </mat-card-content>
+        <mat-card-content> Sexo: {{ item.sex }} </mat-card-content>
+        <mat-card-content>
+          Fecha nacimiento: {{ item.birthday }}
+        </mat-card-content>
+
         <mat-card-actions>
           <button color="primary" mat-mini-fab (click)="openDialogUpdate(item)">
             <mat-icon>create</mat-icon>
