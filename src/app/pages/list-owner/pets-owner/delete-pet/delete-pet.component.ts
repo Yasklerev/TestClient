@@ -25,6 +25,7 @@ export class DeletePetComponent implements OnInit {
     this.petService.deletePet(id).subscribe(
       (data) => {
         this.dialog.closeAll();
+        location.reload();
       },
       (err) => {
         console.warn('Hubo un error!');

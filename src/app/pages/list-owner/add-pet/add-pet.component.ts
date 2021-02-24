@@ -6,55 +6,18 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-
-import { MomentDateAdapter } from '@angular/material-moment-adapter';
-import {
-  DateAdapter,
-  MAT_DATE_FORMATS,
-  MAT_DATE_LOCALE,
-} from '@angular/material/core';
 import { OwnerService } from 'src/app/services/owner.service';
 
-export const MY_FORMATS = {
-  parse: {
-    dateInput: 'LL',
-  },
-  display: {
-    dateInput: 'YYYY-MM-DD',
-    monthYearLabel: 'YYYY',
-    dateA11yLabel: 'LL',
-    monthYearA11yLabel: 'YYYY',
-  },
-};
-
-import * as _moment from 'moment';
-
-import { default as _rollupMoment } from 'moment';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { PetService } from 'src/app/services/pet.service';
-
-const moment = _rollupMoment || _moment;
+import { locale } from 'moment';
 @Component({
   selector: 'app-add-pet',
   templateUrl: './add-pet.component.html',
   styleUrls: ['./add-pet.component.scss'],
-  providers: [
-    {
-      provide: DateAdapter,
-      useClass: MomentDateAdapter,
-      deps: [MAT_DATE_LOCALE],
-    },
-
-    { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
-  ],
 })
 export class AddPetComponent implements OnInit {
-  date = new FormControl(moment());
-
-  flightSchedule = {
-    date: new Date(),
-  };
-
+  edit = false;
   form: FormGroup;
 
   createForm(): void {
@@ -70,39 +33,58 @@ export class AddPetComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private ownerService: OwnerService,
-    @Inject(MAT_DIALOG_DATA) public data: { id: number },
-    private petService: PetService
+    @Inject(MAT_DIALOG_DATA) public data: { id: number; pet: any },
+    private petService: PetService,
+    public dialog: MatDialog
   ) {
     this.createForm();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.data.pet) {
+      this.edit = true;
+      this.form = this.formBuilder.group({
+        id: [this.data.pet.id],
+        name: [this.data.pet.namePet, [Validators.required]],
+        type_pet: [this.data.pet.type_pet, [Validators.required]],
+        race: [this.data.pet.race, [Validators.required]],
+        sex: [this.data.pet.sex, [Validators.required]],
+        birthday: [this.data.pet.birthday, [Validators.required]],
+      });
+    }
+  }
 
   save() {
-    const year = this.form.value.birthday._i.year;
-    const month = this.form.value.birthday._i.month;
-    const dayDate = this.form.value.birthday._i.date;
-
-    const newDate = year + '-' + month + '-' + dayDate;
-
-    const petUpdated = {
-      name: this.form.value.name,
-      type_pet: this.form.value.type_pet,
-      race: this.form.value.race,
-      sex: this.form.value.sex,
-      birthday: newDate,
-      owner: this.data.id,
-    };
-
-    console.log(petUpdated);
-
     if (this.form.invalid) {
       return;
     }
 
-    this.petService.createPet(petUpdated).subscribe(
+    const pet = {
+      name: this.form.value.name,
+      type_pet: this.form.value.type_pet,
+      race: this.form.value.race,
+      sex: this.form.value.sex,
+      birthday: this.form.value.birthday,
+      owner: this.data.id,
+    };
+
+    this.petService.createPet(pet).subscribe(
       (data) => {
-        console.log(data);
+        console.log('Mascoota creada');
+        this.dialog.closeAll();
+      },
+      (err) => {
+        console.warn('Hubo un error!');
+        console.warn(err);
+      }
+    );
+  }
+
+  update() {
+    this.petService.updatePet(this.form.value).subscribe(
+      (data) => {
+        this.dialog.closeAll();
+        location.reload();
       },
       (err) => {
         console.warn('Hubo un error!');

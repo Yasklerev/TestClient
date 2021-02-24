@@ -16,8 +16,12 @@
           Raza: {{ item.race }}
         </mat-card-content>
         <mat-card-actions>
-          <button mat-raised-button>Eliminar</button>
-          <button mat-raised-button>Modificar</button>
+          <button mat-raised-button (click)="openDialogDelete(item.id)">
+            Eliminar
+          </button>
+          <button mat-raised-button (click)="openDialogUpdate(item)">
+            Modificar
+          </button>
         </mat-card-actions>
       </mat-card>
     </div>

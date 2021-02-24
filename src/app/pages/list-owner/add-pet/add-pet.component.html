@@ -5,7 +5,7 @@
         <div class="row">
           <div class="col-xs-12">
             <div class="box">
-              <form autocomplete="off" [formGroup]="form" (ngSubmit)="save()">
+              <form autocomplete="off" [formGroup]="form" (ngSubmit)=" edit ? update() : save()">
                 <mat-form-field class="input" appearance="outline">
                   <mat-label>Nombre</mat-label>
                   <input formControlName="name" matInput placeholder="Nombre" />
@@ -44,7 +44,8 @@
                     Abrir calendario
                   </button>
                 </div>
-                <button type="submit" mat-raised-button>Agregar</button>
+                <button type="submit" mat-raised-button *ngIf="edit === true" >Modificar</button>
+                <button type="submit" mat-raised-button *ngIf="edit === false" >Agregar</button>
               </form>
             </div>
           </div>

@@ -1,6 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Router } from '@angular/router';
 import { OwnerService } from 'src/app/services/owner.service';
 import { PetService } from 'src/app/services/pet.service';
 
@@ -14,7 +13,6 @@ export class DeleteOwnerComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: { id: number; name: string },
     private petService: PetService,
     private ownerService: OwnerService,
-    private router: Router,
     public dialog: MatDialog
   ) {}
 

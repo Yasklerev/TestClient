@@ -9,7 +9,7 @@ import {
 
 import { OwnerService } from 'src/app/services/owner.service';
 
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-owner',
@@ -34,7 +34,8 @@ export class NewOwnerComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private ownerService: OwnerService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private rotuer: Router
   ) {
     this.createForm();
   }
@@ -70,7 +71,7 @@ export class NewOwnerComponent implements OnInit {
     }
     this.ownerService.createOwner(this.form.value).subscribe(
       (data) => {
-        console.log(data);
+        this.rotuer.navigateByUrl('/listOwner');
       },
       (err) => {
         console.warn('Hubo un error!');
