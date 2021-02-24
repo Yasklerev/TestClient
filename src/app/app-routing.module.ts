@@ -11,6 +11,7 @@ const routes: Routes = [
   { path: 'newOwner', component: NewOwnerComponent },
   { path: 'addPet', component: AddPetComponent },
   { path: 'listOwner', component: ListOwnerComponent },
+  { path: 'editOwner/:id', component: NewOwnerComponent },
   { path: 'listPet', component: ListPetComponent },
   { path: '', pathMatch: 'full', redirectTo: 'home' },
 ];

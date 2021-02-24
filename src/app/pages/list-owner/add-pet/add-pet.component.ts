@@ -31,12 +31,22 @@ import * as _moment from 'moment';
 
 import { default as _rollupMoment } from 'moment';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { PetService } from 'src/app/services/pet.service';
 
 const moment = _rollupMoment || _moment;
 @Component({
   selector: 'app-add-pet',
   templateUrl: './add-pet.component.html',
   styleUrls: ['./add-pet.component.scss'],
+  providers: [
+    {
+      provide: DateAdapter,
+      useClass: MomentDateAdapter,
+      deps: [MAT_DATE_LOCALE],
+    },
+
+    { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
+  ],
 })
 export class AddPetComponent implements OnInit {
   date = new FormControl(moment());
@@ -60,7 +70,8 @@ export class AddPetComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private ownerService: OwnerService,
-    @Inject(MAT_DIALOG_DATA) public data: { id: number }
+    @Inject(MAT_DIALOG_DATA) public data: { id: number },
+    private petService: PetService
   ) {
     this.createForm();
   }
@@ -69,20 +80,16 @@ export class AddPetComponent implements OnInit {
 
   save() {
     const year = this.form.value.birthday._i.year;
-
-    console.log(year);
-
     const month = this.form.value.birthday._i.month;
     const dayDate = this.form.value.birthday._i.date;
 
-    const newDate = year + '-' + month + '-' + '0' + dayDate;
+    const newDate = year + '-' + month + '-' + dayDate;
 
     const petUpdated = {
       name: this.form.value.name,
-      last_name: this.form.value.lastName,
-      rut: this.form.value.rut,
-      email: this.form.value.email,
-      address: this.form.value.address,
+      type_pet: this.form.value.type_pet,
+      race: this.form.value.race,
+      sex: this.form.value.sex,
       birthday: newDate,
       owner: this.data.id,
     };
@@ -90,8 +97,17 @@ export class AddPetComponent implements OnInit {
     console.log(petUpdated);
 
     if (this.form.invalid) {
-      console.log('formulario inválidos');
       return;
     }
+
+    this.petService.createPet(petUpdated).subscribe(
+      (data) => {
+        console.log(data);
+      },
+      (err) => {
+        console.warn('Hubo un error!');
+        console.warn(err);
+      }
+    );
   }
 }

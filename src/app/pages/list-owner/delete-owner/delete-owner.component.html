@@ -1,0 +1,16 @@
+<div class="row center-xs">
+  <div class="col-xs-12">
+    <div class="box">
+      <mat-card>
+        <mat-card-title> ¿Deseas eliminar este registro? </mat-card-title>
+        <mat-card-subtitle>
+          Nombre del registro: {{ data.name }}
+        </mat-card-subtitle>
+        <mat-card-actions>
+          <button mat-raised-button (click)="deleteOwner(data.id)">Sí</button>
+          <button mat-raised-button (click)="notDelete()">No</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>

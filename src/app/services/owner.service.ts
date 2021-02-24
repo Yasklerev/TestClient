@@ -11,7 +11,7 @@ export class OwnerService {
   constructor(private httClient: HttpClient) {}
 
   getOwner(id: number) {
-    return this.httClient.get(`${this.API}/owner/:id`);
+    return this.httClient.get(`${this.API}/listOneOwner/${id}`);
   }
 
   getearchWoner() {
@@ -32,6 +32,6 @@ export class OwnerService {
   }
 
   deleteOwner(id: number) {
-    return this.httClient.delete(`${this.API}/deleteOwner/:id`);
+    return this.httClient.delete(`${this.API}/deleteOwner/${id}`);
   }
 }

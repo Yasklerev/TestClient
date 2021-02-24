@@ -21,8 +21,10 @@
           >
             Ver mascotas
           </button>
-          <button mat-raised-button>Modificar</button>
-          <button mat-raised-button>Eliminar</button>
+          <button mat-raised-button [routerLink]="['/editOwner', item.id]">
+            Modificar
+          </button>
+          <button mat-raised-button (click)="openDialogDelete(item.id, item.name)" >Eliminar</button>
         </mat-card-actions>
       </mat-card>
     </div>

@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Owner } from 'src/app/models/owner';
 import { OwnerService } from 'src/app/services/owner.service';
 import { PetService } from 'src/app/services/pet.service';
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { PetsOwnerComponent } from './pets-owner/pets-owner.component';
 import { AddPetComponent } from './add-pet/add-pet.component';
+import { DeleteOwnerComponent } from './delete-owner/delete-owner.component';
 
 @Component({
   selector: 'app-list-owner',
@@ -49,8 +50,17 @@ export class ListOwnerComponent implements OnInit {
   openDialogAddPet(id) {
     this.dialog.open(AddPetComponent, {
       data: {
-        id
-      }
+        id,
+      },
+    });
+  }
+
+  openDialogDelete(id, name) {
+    this.dialog.open(DeleteOwnerComponent, {
+      data: {
+        id,
+        name,
+      },
     });
   }
 }
