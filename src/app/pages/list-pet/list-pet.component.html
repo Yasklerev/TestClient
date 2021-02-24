@@ -1,6 +1,10 @@
 <div class="row center-xs margin-top">
   <div class="col-xs-8">
-    <div class="box">
+    <mat-progress-bar
+      *ngIf="progress === true"
+      mode="indeterminate"
+    ></mat-progress-bar>
+    <div class="box" *ngIf="progress === false">
       <mat-card class="card" *ngFor="let item of pets">
         <mat-card-title>
           {{ item.namePet }}

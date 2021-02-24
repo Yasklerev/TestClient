@@ -15,6 +15,7 @@ import { DeleteOwnerComponent } from './delete-owner/delete-owner.component';
 export class ListOwnerComponent implements OnInit {
   owners: Owner;
   pets: any;
+  progress = true;
 
   constructor(
     private ownerService: OwnerService,
@@ -23,6 +24,11 @@ export class ListOwnerComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+
+    setTimeout(() => {
+      this.progress = false;
+    }, 500);
+
     this.listAllOwners();
   }
 

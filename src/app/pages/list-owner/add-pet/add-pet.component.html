@@ -7,7 +7,11 @@
             <div class="box">
               <h2 *ngIf="edit === false">Agregar mascota</h2>
               <h2 *ngIf="edit === true">Modificar mascota</h2>
-              <form autocomplete="off" [formGroup]="form" (ngSubmit)=" edit ? update() : save()">
+              <form
+                autocomplete="off"
+                [formGroup]="form"
+                (ngSubmit)="edit ? update() : save()"
+              >
                 <mat-form-field class="input" appearance="outline">
                   <mat-label>Nombre</mat-label>
                   <input formControlName="name" matInput placeholder="Nombre" />
@@ -46,8 +50,31 @@
                     Abrir calendario
                   </button>
                 </div>
-                <button type="submit" mat-raised-button *ngIf="edit === true" >Modificar</button>
-                <button type="submit" mat-raised-button *ngIf="edit === false" >Agregar</button>
+                <button
+                  type="submit"
+                  color="primary"
+                  mat-raised-button
+                  *ngIf="edit === true"
+                >
+                  Modificar
+                </button>
+                <button
+                  type="submit"
+                  color="primary"
+                  mat-raised-button
+                  *ngIf="edit === false"
+                >
+                  Agregar
+                </button>
+                <button
+                  class="cancelar"
+                  type="button"
+                  color="warn"
+                  mat-raised-button
+                  (click)="cancel()"
+                >
+                  Cancelar
+                </button>
               </form>
             </div>
           </div>

@@ -1,6 +1,10 @@
 <div class="row center-xs margin-top">
   <div class="col-xs-8">
-    <div class="box">
+    <mat-progress-bar
+      *ngIf="progress === true"
+      mode="indeterminate"
+    ></mat-progress-bar>
+    <div class="box" *ngIf="progress === false">
       <mat-card class="card" *ngFor="let item of owners">
         <mat-card-title>
           {{ item.name }}
@@ -8,11 +12,11 @@
         <mat-card-content>
           {{ item.last_name }}
         </mat-card-content>
+        <mat-card-content> Correo: {{ item.email }} </mat-card-content>
+        <mat-card-content> Rut: {{ item.rut }} </mat-card-content>
+        <mat-card-content> Dirección: {{ item.address }} </mat-card-content>
         <mat-card-content>
-          {{ item.rut }}
-        </mat-card-content>
-        <mat-card-content>
-          {{ item.address }}
+          Fecha nacimiento: {{ item.birthday }}
         </mat-card-content>
         <mat-card-actions>
           <button
@@ -22,10 +26,7 @@
           >
             <mat-icon>add_circle</mat-icon>
           </button>
-          <button
-            mat-mini-fab
-            (click)="openDialogListPets(item.id, item.name)"
-          >
+          <button mat-mini-fab (click)="openDialogListPets(item.id, item.name)">
             <mat-icon>pets</mat-icon>
           </button>
           <button

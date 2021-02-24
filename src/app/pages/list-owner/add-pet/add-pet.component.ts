@@ -92,4 +92,8 @@ export class AddPetComponent implements OnInit {
       }
     );
   }
+
+  cancel() {
+    this.dialog.closeAll();
+  }
 }

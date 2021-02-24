@@ -18,6 +18,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class NewOwnerComponent implements OnInit {
   edit = false;
   form: FormGroup;
+  progress = true;
 
   get rutNoValido(): boolean {
     return this.form.get('rut').invalid && this.form.get('rut').touched;

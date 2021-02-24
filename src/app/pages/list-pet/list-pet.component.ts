@@ -11,11 +11,15 @@ import { DeletePetComponent } from '../list-owner/pets-owner/delete-pet/delete-p
 })
 export class ListPetComponent implements OnInit {
   pets: any;
+  progress = true;
 
   constructor(private petService: PetService, public dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.listAllPets();
+    setTimeout(() => {
+      this.progress = false;
+    }, 500);
   }
 
   listAllPets() {
